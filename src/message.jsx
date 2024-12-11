@@ -8,7 +8,7 @@ function message() {
 
   const userData = JSON.parse(localStorage.getItem('userData'));
   let userNameMessage = userData.userNameLogin;
-
+  let interval = 22;
   const [contact, setContact] = useState([]);
   const [convo, setConvo] = useState([]);
   const [messageId, setMessageId] = useState('6713b902a6c1f8602abfb9b4');
@@ -17,6 +17,7 @@ function message() {
   const [userName, setUserName] = useState(userNameMessage);
   const [connectName, setConnctname] = useState('abc');
   const [addFlag, setAddFlag] = useState(false);
+  const [addConvo, setAddConvo] = useState(false);
   const refer = useRef(null);
   const navigate = useNavigate();
   /*        iframe           */
@@ -44,21 +45,21 @@ function message() {
     refer.current?.scrollIntoView({ behaviour: "smooth" });
     axios.get(`http://localhost:7000/user/fetch/${userName}`)
       .then(response => { setContact(response.data); });
-
-  }, [convo, addFlag]);
+  }, [convo]);
 
   useEffect(() => {
+
     refer.current?.scrollIntoView({ behaviour: "smooth" });
     axios.get(`https://chatbox-backend-1-46yg.onrender.com/user/fetch/${userName}`)
       .then(response => { setContact(response.data); });
-
   }, []);
   useEffect(() => {
+
     refer.current?.scrollIntoView({ behaviour: "smooth" });
     axios.get(`https://chatbox-backend-1-46yg.onrender.com/user/fetch/${userName}`)
       .then(response => { setContact(response.data); });
 
-  }, [dataUpdate]);
+  }, [dataUpdate, addConvo]);
 
   /*        iframe           */
   useEffect(() => {
@@ -74,17 +75,16 @@ function message() {
 
   useEffect(() => {
     if (selectedContact != '') {
-      const firstPerson = contact.map(({person1})=>(person1));
-      const secondPerson = contact.map(({person2})=>(person2));
+      const firstPerson = contact.map(({ person1 }) => (person1));
+      const secondPerson = contact.map(({ person2 }) => (person2));
       console.log(selectedContact);
-      if(!firstPerson.includes(selectedContact) && !secondPerson.includes(selectedContact))
-      {
-      axios.post('https://chatbox-backend-1-46yg.onrender.com/user/addConvo', { person1: userNameMessage, person2: selectedContact })
-        .then((res) => { console.log(res); setDataUpdate(!dataUpdate); })
-        .catch((err) => { console.log(err); });
+      if (!firstPerson.includes(selectedContact) && !secondPerson.includes(selectedContact)) {
+        axios.post('https://chatbox-backend-1-46yg.onrender.com/user/addConvo', { person1: userNameMessage, person2: selectedContact })
+          .then((res) => { console.log(res); setDataUpdate(!dataUpdate); })
+          .catch((err) => { console.log(err); });
       }
-      else{
-         window.alert("Conversation already exists");
+      else {
+        window.alert("Conversation already exists");
       }
     }
 
@@ -148,7 +148,7 @@ function message() {
             <div style={{ marginTop: "99px" }} ></div>
           </div>
           <div>
-            <form onSubmit={(e) => { submitted(e); }}>
+            <form onSubmit={(e) => { interval = setTimeout(() => { console.log("Running"); setAddConvo(!addConvo); console.log(interval); }, 500); submitted(e); }}>
               <input className='messageBox' type='text' value={message} onChange={(e) => { setMessage(e.target.value) }}></input>
             </form>
           </div>
