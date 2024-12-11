@@ -28,11 +28,11 @@ function message() {
   function submitted(e) {
     e.preventDefault();
     setConvo([...convo, { person: person1, personConvo: message }]);
-    axios.put(`http://localhost:7000/user/update/${messageId}`, { updatedMessage: message, personCon: userName })
+    axios.put(`https://chatbox-backend-1-46yg.onrender.com/user/update/${messageId}`, { updatedMessage: message, personCon: userName })
       .then((res) => console.log("success"))
       .then(error => console.log(error))
 
-    axios.get(`http://localhost:7000/user/fetch/${userName}`)
+    axios.get(`https://chatbox-backend-1-46yg.onrender.com/user/fetch/${userName}`)
       .then(response => { setContact(response.data); });
     console.log(message);
     setMessage('');
@@ -48,20 +48,20 @@ function message() {
 
   useEffect(() => {
     refer.current?.scrollIntoView({ behaviour: "smooth" });
-    axios.get(`http://localhost:7000/user/fetch/${userName}`)
+    axios.get(`https://chatbox-backend-1-46yg.onrender.com/user/fetch/${userName}`)
       .then(response => { setContact(response.data); });
 
   }, []);
   useEffect(() => {
     refer.current?.scrollIntoView({ behaviour: "smooth" });
-    axios.get(`http://localhost:7000/user/fetch/${userName}`)
+    axios.get(`https://chatbox-backend-1-46yg.onrender.com/user/fetch/${userName}`)
       .then(response => { setContact(response.data); });
 
   }, [dataUpdate]);
 
-   /*        iframe           */
-   useEffect(() => {
-    axios.get('http://localhost:7000/user/contactFetch')
+  /*        iframe           */
+  useEffect(() => {
+    axios.get('https://chatbox-backend-1-46yg.onrender.com/user/contactFetch')
       .then((res) => { setContactFrame(res.data); });
   }, [addFlag]);
 
@@ -74,9 +74,9 @@ function message() {
   useEffect(() => {
     if (selectedContact != '') {
       console.log(selectedContact);
-      axios.post('http://localhost:7000/user/addConvo', { person1: userNameMessage , person2: selectedContact })
-        .then((res) => { console.log(res); setDataUpdate(!dataUpdate);})
-        .catch((err) => {console.log(err); });
+      axios.post('https://chatbox-backend-1-46yg.onrender.com/user/addConvo', { person1: userNameMessage, person2: selectedContact })
+        .then((res) => { console.log(res); setDataUpdate(!dataUpdate); })
+        .catch((err) => { console.log(err); });
     }
 
   }, [selectedContact]);
@@ -148,7 +148,7 @@ function message() {
       <div>
         <button className='AddConvo' onClick={() => { setAddFlag(!addFlag) }}></button>
         {addFlag &&
-            <div className='addContact'>
+          <div className='addContact'>
             <div className='contactContainer'>
               {contactFrame.map((contacts) => (
                 <div key={contacts._id}>
