@@ -19,27 +19,68 @@ function message() {
   const [addFlag, setAddFlag] = useState(false);
   const refer = useRef(null);
   const navigate = useNavigate();
+  /*        iframe           */
+  const [contactFrame, setContactFrame] = useState([]);
+  const [selectedContact, setSelectedContact] = useState('');
+  const [dataUpdate, setDataUpdate] = useState(true);
+
 
   function submitted(e) {
     e.preventDefault();
     setConvo([...convo, { person: person1, personConvo: message }]);
-    axios.put(`https://chatbox-backend-1-46yg.onrender.com/user/update/${messageId}`, { updatedMessage: message, personCon: userName })
+    axios.put(`http://localhost:7000/user/update/${messageId}`, { updatedMessage: message, personCon: userName })
       .then((res) => console.log("success"))
       .then(error => console.log(error))
 
-    axios.get(`https://chatbox-backend-1-46yg.onrender.com/user/fetch/${userName}`)
+    axios.get(`http://localhost:7000/user/fetch/${userName}`)
       .then(response => { setContact(response.data); });
     console.log(message);
     setMessage('');
   }
 
 
+  // useEffect(() => {
+  //   refer.current?.scrollIntoView({ behaviour: "smooth" });
+  //   axios.get(`http://localhost:7000/user/fetch/${userName}`)
+  //     .then(response => { setContact(response.data); });
+
+  // }, [convo, addFlag]);
+
   useEffect(() => {
     refer.current?.scrollIntoView({ behaviour: "smooth" });
-    axios.get(`https://chatbox-backend-1-46yg.onrender.com/user/fetch/${userName}`)
+    axios.get(`http://localhost:7000/user/fetch/${userName}`)
       .then(response => { setContact(response.data); });
 
-  }, [convo, addFlag]);
+  }, []);
+  useEffect(() => {
+    refer.current?.scrollIntoView({ behaviour: "smooth" });
+    axios.get(`http://localhost:7000/user/fetch/${userName}`)
+      .then(response => { setContact(response.data); });
+
+  }, [dataUpdate]);
+
+   /*        iframe           */
+   useEffect(() => {
+    axios.get('http://localhost:7000/user/contactFetch')
+      .then((res) => { setContactFrame(res.data); });
+  }, [addFlag]);
+
+  // // useEffect(() => {
+  // //   console.log("datachange reACHED");
+  // //   axios.get('http://localhost:7000/user/contactFetch')
+  // //     .then((res) => { setContactFrame(res.data); });
+  // // }, [dataUpdate]);
+
+  useEffect(() => {
+    if (selectedContact != '') {
+      console.log(selectedContact);
+      axios.post('http://localhost:7000/user/addConvo', { person1: userNameMessage , person2: selectedContact })
+        .then((res) => { console.log(res); setDataUpdate(!dataUpdate);})
+        .catch((err) => {console.log(err); });
+    }
+
+  }, [selectedContact]);
+
 
   return (
     <div className='frame' >
@@ -107,7 +148,16 @@ function message() {
       <div>
         <button className='AddConvo' onClick={() => { setAddFlag(!addFlag) }}></button>
         {addFlag &&
-          <iframe className="iframeStyle" width="350px" height="500px" src='/contacts'></iframe>
+            <div className='addContact'>
+            <div className='contactContainer'>
+              {contactFrame.map((contacts) => (
+                <div key={contacts._id}>
+                  {userData.userNameLogin !== contacts.username && <center><button className='contactButton' onClick={() => { setSelectedContact(contacts.username); }}>{contacts.username}</button></center>}
+                </div>
+              ))
+              }
+            </div>
+          </div>
         }
       </div>
     </div>

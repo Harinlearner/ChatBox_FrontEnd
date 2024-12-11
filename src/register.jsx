@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios'
 import './login.css'
-function login() {
+function register() {
     const [username, setUserName] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
@@ -10,7 +10,7 @@ function login() {
         e.preventDefault();
         axios.post('https://chatbox-backend-1-46yg.onrender.com/user/register', { username, password }) // use same name in the back and front end or else the data will be undefined
             .then((res) => {
-                let userNameLogin = res.data.username;
+                let userNameLogin = username;
                 let userData = {
                     userNameLogin,
                 };
@@ -48,4 +48,4 @@ function login() {
     )
 }
 
-export default login;
+export default register;

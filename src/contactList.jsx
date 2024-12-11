@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { useEffect } from 'react';
 import { useState } from 'react';
-import { Navigate } from 'react-router-dom';
+
 import './contactLists.css';
 function contactList() {
   let user = JSON.parse(localStorage.getItem('userData'));
