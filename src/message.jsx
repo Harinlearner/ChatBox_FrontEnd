@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import axios from 'axios';
 import './mess.css'
 import contactList from './contactList';
+import { Navigate } from 'react-router-dom';
 
 function message() {
 
@@ -17,6 +18,7 @@ function message() {
   const [connectName, setConnctname] = useState('abc');
   const [addFlag, setAddFlag] = useState(false);
   const refer = useRef(null);
+  const navigate = Navigate();
 
   function submitted(e) {
     e.preventDefault();
@@ -74,11 +76,11 @@ function message() {
                         </div>
                         } */}
                         {userName === mess.person &&
-                          <div ref={refer} className="messageContent" style={{ marginRight: "18px", backgroundColor: 'goldenrod', width: 'fit-content', marginBottom: '-49px', float: 'right', height: "38px" }}><h1>{mess.personConvo}</h1>
+                          <div ref={refer} className="messageContent" style={{ marginRight: "12px", backgroundColor: 'goldenrod', width: 'fit-content', marginBottom: '-70px', float: 'right', height: "35px" }}><h1>{mess.personConvo}</h1>
                           </div>
                         }
                         {userName !== mess.person &&
-                          <div ref={refer} className="messageContent" style={{ marginLeft: "8px", backgroundColor: 'goldenrod', width: 'fit-content', marginBottom: '-49px', float: 'left', height: "38px" }}><h1>{mess.personConvo}</h1>
+                          <div ref={refer} className="messageContent" style={{ marginLeft: "8px", backgroundColor: 'goldenrod', width: 'fit-content', marginBottom: '-70px', float: 'left', height: "35px" }}><h1>{mess.personConvo}</h1>
                           </div>
                         }
 
@@ -113,4 +115,3 @@ function message() {
 }
 
 export default message;
-

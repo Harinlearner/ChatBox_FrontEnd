@@ -46,12 +46,10 @@
 }
 .messageContent
 {
-    background-color: #000638;
-    border-radius: 17px;
-    /*padding-left: 30px;
-    padding-right: 30px;
-    padding-bottom: 5px;
-    padding-top: -13px; */
+    border-radius: 30px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 10px;
 }
 
 .messageContainer

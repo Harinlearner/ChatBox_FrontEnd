@@ -6,6 +6,7 @@ function login() {
     const [username, setUserName] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
+
     const submitted = (e) => {
         e.preventDefault();
         axios.post('https://chatbox-backend-1-46yg.onrender.com/user/login', { username, password }) // use same name in the back and front end or else the data will be undefined
@@ -39,7 +40,7 @@ function login() {
                             <br></br>
                             <br></br>
                             <label>{`Don't have account`}</label>
-                            <a href="/register" type="button"> Register</a>
+                            <a type="button" onClick={()=>navigate("/register")}> Register</a>
                         </form>
                     </div>
                 </center>
