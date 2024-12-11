@@ -1,0 +1,99 @@
+.iframeStyle
+{
+    border-radius: 30px;
+    background-color: rgb(44, 193, 39);
+    position:fixed;
+    top: 10%;
+    left:40%;
+    z-index: 2;
+}
+.contact{
+    
+    font-size: 30px;
+    width:95%;
+    height:60px;
+    border-radius: 10px;
+    margin:2px; 
+    margin-left: 3%;
+}
+.contactDiv
+{
+    width:500px;
+    background-color: rgb(0, 122, 229);
+    height:706px;
+    overflow-y: auto;
+}
+.contactDiv::-webkit-scrollbar{
+    width: 5px;
+    color:aqua
+}
+.contactDiv::-webkit-scrollbar-thumb { 
+  background:#ff6060;
+  border-radius: 10px;
+  border-width: 3px;
+}
+.contactDiv::-webkit-scrollbar-track{
+ background-color: #000638;
+ border-width: 5px;
+}
+ 
+.container{
+   display:flex;
+   overflow-x:hidden;
+}
+.frame{
+    overflow-x:hidden;
+}
+.messageContent
+{
+    border-radius: 17px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 5px;
+    padding-top: -13px;
+}
+
+.messageContainer
+{
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    font-size: 10px;
+    z-index: 1;
+    background-image: url('https://media.istockphoto.com/id/917266744/vector/social-media-line-seamless-pattern.jpg?s=612x612&w=0&k=20&c=J-G0wp_JL-DpAr0UfNR5J2qSXSsjnETUfLzWntAdHTM=');
+    background-size: cover;
+    color: rgb(255, 255, 255);
+   margin-left: 1%;
+    width:104%;
+    height:706px;
+    /* background-color: rgb(151, 151, 255); */
+}
+.messageBox
+{
+    
+    font-size: 30px;
+    padding-top: 3px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 3px;
+    margin-left:60px;
+    width:900px;
+    border-radius: 20px;
+    position: fixed;
+    top:91.7%;
+}
+.frame
+{
+    padding-bottom: 7px;
+    margin:-8px -10px -10px -10px;
+    background-color: #000638;
+}
+.AddConvo{
+    height:70px;
+    width:70px;
+    border-radius: 50px;
+    background-image: url('https://cdn-icons-png.flaticon.com/512/3294/3294364.png');
+    background-size: cover;
+    position:fixed;
+    top:80%;
+    left:27%;
+}

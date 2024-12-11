@@ -1,0 +1,45 @@
+.loginContainer
+{
+   
+    border-radius: 25px;
+    background-color: rgba(180, 135, 232, 0.599);
+    margin-top: 10%;
+    width: fit-content;
+    padding: 4%;
+}
+
+
+.label{
+    font-size: large;
+    
+}
+
+.input{
+    width:130px;
+    padding: 3px;
+    border-radius: 7px;
+}
+
+.login{
+    border-radius: 30px;
+    font-size: large;
+    width: 70px;
+    height:30px;
+}
+
+.login:hover{
+    border-radius: 30px;
+    font-size: large;
+    width: 70px;
+    height:30px;
+    color: aliceblue;
+    background-color: chocolate;
+}
+
+a{
+    color: aliceblue;
+}
+
+a:hover{
+    color: chocolate;
+}
