@@ -74,7 +74,7 @@ function message() {
                         </div>
                         } */}
                         {userName === mess.person &&
-                          <div ref={refer} className="messageContent" style={{ marginRight: "8px", backgroundColor: 'goldenrod', width: 'fit-content', marginBottom: '-49px', float: 'right', height: "38px" }}><h1>{mess.personConvo}</h1>
+                          <div ref={refer} className="messageContent" style={{ marginRight: "12px", backgroundColor: 'goldenrod', width: 'fit-content', marginBottom: '-49px', float: 'right', height: "38px" }}><h1>{mess.personConvo}</h1>
                           </div>
                         }
                         {userName !== mess.person &&
