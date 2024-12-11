@@ -73,10 +73,18 @@ function message() {
 
   useEffect(() => {
     if (selectedContact != '') {
+      const firstPerson = contact.map(({person1})=>(person1));
+      const secondPerson = contact.map(({person2})=>(person2));
       console.log(selectedContact);
+      if(!firstPerson.includes(selectedContact) && !secondPerson.includes(selectedContact))
+      {
       axios.post('https://chatbox-backend-1-46yg.onrender.com/user/addConvo', { person1: userNameMessage, person2: selectedContact })
         .then((res) => { console.log(res); setDataUpdate(!dataUpdate); })
         .catch((err) => { console.log(err); });
+      }
+      else{
+         window.alert("Conversation already exists");
+      }
     }
 
   }, [selectedContact]);
