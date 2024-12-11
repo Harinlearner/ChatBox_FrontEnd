@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import axios from 'axios';
 import './mess.css'
 import contactList from './contactList';
-import { use } from 'react';
+
 function message() {
 
   const userData = JSON.parse(localStorage.getItem('userData'));
