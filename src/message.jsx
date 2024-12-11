@@ -31,9 +31,7 @@ function message() {
     setMessage('');
   }
 
-  useEffect(() => {
 
-  }, []);
   useEffect(() => {
     refer.current?.scrollIntoView({ behaviour: "smooth" });
     axios.get(`https://chatbox-backend-1-46yg.onrender.com/user/fetch/${userName}`)
