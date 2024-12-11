@@ -46,7 +46,7 @@
 }
 .messageContent
 {
-    border-radius: 17px;
+    border-radius: 20px;
     padding-left: 30px;
     padding-right: 30px;
     padding-bottom: 15px;
@@ -57,7 +57,7 @@
 {
     overflow-y: auto;
     scroll-behavior: smooth;
-    font-size: 13px;
+    font-size: 10px;
     z-index: 1;
     background-image: url('https://media.istockphoto.com/id/917266744/vector/social-media-line-seamless-pattern.jpg?s=612x612&w=0&k=20&c=J-G0wp_JL-DpAr0UfNR5J2qSXSsjnETUfLzWntAdHTM=');
     background-size: cover;
