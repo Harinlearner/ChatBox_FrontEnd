@@ -40,7 +40,7 @@ function login() {
                             <br></br>
                             <br></br>
                             <label>{`Don't have account`}</label>
-                            <a href="/register" type="button" onClick={()=>{navigate("/register");}}> Register</a>
+                            <input type="button" onClick={()=>{navigate("/register");}}> Register</input>
                         </form>
                     </div>
                 </center>
