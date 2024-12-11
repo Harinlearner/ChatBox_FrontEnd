@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import axios from 'axios';
 import './mess.css'
 import contactList from './contactList';
-import { Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function message() {
 
@@ -18,7 +18,7 @@ function message() {
   const [connectName, setConnctname] = useState('abc');
   const [addFlag, setAddFlag] = useState(false);
   const refer = useRef(null);
-  const navigate = Navigate();
+  const navigate = useNavigate();
 
   function submitted(e) {
     e.preventDefault();
