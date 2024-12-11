@@ -35,16 +35,17 @@ function message() {
     axios.get(`https://chatbox-backend-1-46yg.onrender.com/user/fetch/${userName}`)
       .then(response => { setContact(response.data); });
     console.log(message);
+
     setMessage('');
   }
 
 
-  // useEffect(() => {
-  //   refer.current?.scrollIntoView({ behaviour: "smooth" });
-  //   axios.get(`http://localhost:7000/user/fetch/${userName}`)
-  //     .then(response => { setContact(response.data); });
+  useEffect(() => {
+    refer.current?.scrollIntoView({ behaviour: "smooth" });
+    axios.get(`http://localhost:7000/user/fetch/${userName}`)
+      .then(response => { setContact(response.data); });
 
-  // }, [convo, addFlag]);
+  }, [convo, addFlag]);
 
   useEffect(() => {
     refer.current?.scrollIntoView({ behaviour: "smooth" });
