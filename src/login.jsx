@@ -5,7 +5,7 @@ import './login.css'
 function login() {
     const [username, setUserName] = useState('');
     const [password, setPassword] = useState('');
-    const navigate = useNavigate();
+    const navigate1 = useNavigate();
 
     const submitted = (e) => {
         e.preventDefault();
@@ -16,7 +16,7 @@ function login() {
                     userNameLogin,
                 };
                 localStorage.setItem('userData', JSON.stringify(userData));
-                navigate("/main");
+                navigate1("/main");
             })
             .catch((err) => { window.alert("Enter the Correct username/password") });
     }
