@@ -46,11 +46,11 @@
 }
 .messageContent
 {
-    border-radius: 17px;
+    /* border-radius: 17px;
     padding-left: 30px;
     padding-right: 30px;
     padding-bottom: 5px;
-    padding-top: -13px;
+    padding-top: -13px; */
 }
 
 .messageContainer
