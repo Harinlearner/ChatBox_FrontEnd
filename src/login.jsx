@@ -21,7 +21,7 @@ function login() {
             .catch((err) => { window.alert("Enter the Correct username/password") });
     }
     return (
-        <div style={{ paddingTop: "0.2%", paddingBottom: "12.5%", backgroundImage: "url(" + "https://png.pngtree.com/thumb_back/fh260/background/20200714/pngtree-modern-double-color-futuristic-neon-background-image_351866.jpg" + ")" }}>
+        <div style={{ paddingTop: "0.2%", paddingBottom: "12.5%", backgroundImage: "url(" + "https://png.pngtree.com/thumb_back/fh260/background/20200714/pngtree-modern-double-color-futuristic-neon-background-image_351866.jpg" + ")",backgroundRepeat:"no-repeat",backgroundSize:"cover" }}>
             <div>
                 <center>
                     <div className='loginContainer'>

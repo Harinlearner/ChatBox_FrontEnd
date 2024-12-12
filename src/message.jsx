@@ -99,11 +99,11 @@ function message() {
             <div key={contacts._id}>
               {
                 userName == contacts.person1 &&
-                <button className='contact' onClick={() => { interval = setInterval(() => { console.log("Running"); setAddConvo(!addConvo); console.log(interval); }, 500); setMessageId(contacts._id); setConvo(contacts.convo); console.log(convo); setPerson1(contacts.person1) }}>{contacts.person2}</button>
+                <button className='contact' onClick={() => { interval = setInterval(() => { setAddConvo(!addConvo); console.log(interval); }, 500); setMessageId(contacts._id); setConvo(contacts.convo); console.log(convo); setPerson1(contacts.person1) }}>{contacts.person2}</button>
               }
               {
                 userName == contacts.person2 &&
-                <button className='contact' onClick={() => { interval = setInterval(() => { console.log("Running"); setAddConvo(!addConvo); console.log(interval); }, 500); setMessageId(contacts._id); setConvo(contacts.convo); console.log(convo); setPerson1(contacts.person1) }}>{contacts.person1}</button>
+                <button className='contact' onClick={() => { interval = setInterval(() => { setAddConvo(!addConvo); console.log(interval); }, 500); setMessageId(contacts._id); setConvo(contacts.convo); console.log(convo); setPerson1(contacts.person1) }}>{contacts.person1}</button>
               }
             </div>
           )
