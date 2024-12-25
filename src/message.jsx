@@ -13,7 +13,7 @@ function message() {
   const [convo, setConvo] = useState([]);
   const [messageId, setMessageId] = useState('6713b902a6c1f8602abfb9b4');
   const [message, setMessage] = useState('');
-  const [person1, setPerson1] = useState('');
+  const [person1, setPerson1] = useState('select any Contact');
   const [userName, setUserName] = useState(userNameMessage);
   const [connectName, setConnctname] = useState('abc');
   const [addFlag, setAddFlag] = useState(false);
@@ -49,13 +49,12 @@ function message() {
 
   useEffect(() => {
 
-    refer.current?.scrollIntoView({ behaviour: "smooth" });
     axios.get(`https://chatbox-backend-1-46yg.onrender.com/user/fetch/${userName}`)
       .then(response => { setContact(response.data); });
   }, []);
   useEffect(() => {
 
-    refer.current?.scrollIntoView({ behaviour: "smooth" });
+    // refer.current?.scrollIntoView({ behaviour: "smooth" });
     axios.get(`https://chatbox-backend-1-46yg.onrender.com/user/fetch/${userName}`)
       .then(response => { setContact(response.data); });
 
@@ -67,11 +66,11 @@ function message() {
       .then((res) => { setContactFrame(res.data); });
   }, [addFlag]);
 
-  // // useEffect(() => {
-  // //   console.log("datachange reACHED");
-  // //   axios.get('http://localhost:7000/user/contactFetch')
-  // //     .then((res) => { setContactFrame(res.data); });
-  // // }, [dataUpdate]);
+  useEffect(() => {
+    console.log("datachange reACHED");
+    axios.get('http://localhost:7000/user/contactFetch')
+      .then((res) => { setContactFrame(res.data); });
+  }, [dataUpdate]);
 
   useEffect(() => {
     if (selectedContact != '') {
@@ -99,11 +98,11 @@ function message() {
             <div key={contacts._id}>
               {
                 userName == contacts.person1 &&
-                <button className='contact' onClick={() => { interval = setInterval(() => { setAddConvo(!addConvo); console.log(interval); }, 500); setMessageId(contacts._id); setConvo(contacts.convo); console.log(convo); setPerson1(contacts.person1) }}>{contacts.person2}</button>
+                <button className='contact' onClick={() => { setPerson1(contacts.person2), interval = setInterval(() => { setAddConvo(!addConvo); console.log(interval); }, 500); setMessageId(contacts._id); setConvo(contacts.convo); console.log(convo); }}>{contacts.person2}</button>
               }
               {
                 userName == contacts.person2 &&
-                <button className='contact' onClick={() => { interval = setInterval(() => { setAddConvo(!addConvo); console.log(interval); }, 500); setMessageId(contacts._id); setConvo(contacts.convo); console.log(convo); setPerson1(contacts.person1) }}>{contacts.person1}</button>
+                <button className='contact' onClick={() => { setPerson1(contacts.person1), interval = setInterval(() => { setAddConvo(!addConvo); console.log(interval); }, 500); setMessageId(contacts._id); setConvo(contacts.convo); console.log(convo); }}>{contacts.person1}</button>
               }
             </div>
           )
@@ -114,6 +113,7 @@ function message() {
           </form> */}
         </div>
         <div style={{ width: '1000px' }}>
+          <div className="username">{person1}</div>
           <div className='messageContainer'>
             {contact.map(contacts => {
               return (
@@ -126,11 +126,11 @@ function message() {
                         </div>
                         } */}
                         {userName === mess.person &&
-                          <div ref={refer} className="messageContent" style={{ marginRight: "12px", backgroundColor: 'goldenrod', width: 'fit-content', marginBottom: '-70px', float: 'right', height: "35px" }}><h1>{mess.personConvo}</h1>
+                          <div className="messageContent" style={{ marginRight: "12px", backgroundColor: 'goldenrod', width: 'fit-content', marginBottom: '-70px', float: 'right', height: "35px" }}><h1>{mess.personConvo}</h1>
                           </div>
                         }
                         {userName !== mess.person &&
-                          <div ref={refer} className="messageContent" style={{ marginLeft: "8px", backgroundColor: 'goldenrod', width: 'fit-content', marginBottom: '-70px', float: 'left', height: "35px" }}><h1>{mess.personConvo}</h1>
+                          <div className="messageContent" style={{ marginLeft: "8px", backgroundColor: 'goldenrod', width: 'fit-content', marginBottom: '-70px', float: 'left', height: "35px" }}><h1>{mess.personConvo}</h1>
                           </div>
                         }
 
@@ -145,7 +145,7 @@ function message() {
               );
             })
             }
-            <div style={{ marginTop: "99px" }} ></div>
+            <div ref={refer} style={{ marginTop: "105px" }} ></div>
           </div>
           <div>
             <form onSubmit={(e) => { interval = setTimeout(() => { console.log("Running"); setAddConvo(!addConvo); console.log(interval); }, 500); submitted(e); }}>

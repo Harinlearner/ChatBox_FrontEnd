@@ -7,6 +7,20 @@
     left:40%;
     z-index: 2;
 }
+/* .messageContainer::-webkit-scrollbar-corner
+{
+    color: #000000;
+} */
+.messageContainer::-webkit-scrollbar
+{
+    width: 7px;
+    background-color: #399df5;
+}
+.messageContainer::-webkit-scrollbar-thumb{
+    width: 2px;
+    background-color: #000000;
+    border-radius: 30px;
+}
 .contact{
     
     font-size: 30px;
@@ -18,7 +32,9 @@
 }
 .contactDiv
 {
-    background-image: url('https://img.freepik.com/premium-photo/red-light-lens-flare-black-background_692702-716.jpg');
+    /* background-color: ; */
+    margin-left: 4px;
+    background-image: url('https://t4.ftcdn.net/jpg/05/71/83/47/360_F_571834789_ujYbUnH190iUokdDhZq7GXeTBRgqYVwa.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     width:500px;
@@ -61,13 +77,31 @@
     scroll-behavior: smooth;
     font-size: 10px;
     z-index: 1;
-    background-image: url('https://static.vecteezy.com/system/resources/thumbnails/022/831/198/small/abstract-red-light-on-black-background-with-copy-space-for-your-text-photo.jpg');
+    background-image: url('https://4kwallpapers.com/images/wallpapers/dark-background-abstract-background-network-3d-background-6016x3384-8324.png');
     background-size: cover;
     color: rgb(255, 255, 255);
    margin-left: 1%;
-    width:104%;
-    height:706px;
+    width:103%;
+    height:645px;
     /* background-color: rgb(151, 151, 255); */
+}
+.username
+{
+    color:aliceblue;
+    z-index:2;
+    margin-bottom: 18px;
+    margin-top: -5px;
+    height:40px;
+    padding-top: 7px;
+    width:101%;
+    font-size: 25px;
+    margin-left: 8px;
+    border-radius: 20px;
+    padding-left: 10px;
+    background-color: chocolate;
+    position: relative;
+    top:10px;
+
 }
 .messageBox
 {
