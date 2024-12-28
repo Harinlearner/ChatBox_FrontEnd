@@ -25,30 +25,31 @@ function message() {
   const [selectedContact, setSelectedContact] = useState('');
   const [dataUpdate, setDataUpdate] = useState(true);
 
-
   function submitted(e) {
     e.preventDefault();
     setConvo([...convo, { person: person1, personConvo: message }]);
     axios.put(`https://chatbox-backend-1-46yg.onrender.com/user/update/${messageId}`, { updatedMessage: message, personCon: userName })
       .then((res) => console.log("success"))
       .then(error => console.log(error))
-
     axios.get(`https://chatbox-backend-1-46yg.onrender.com/user/fetch/${userName}`)
       .then(response => { setContact(response.data); });
     console.log(message);
-
     setMessage('');
   }
-
-
+  function fetching() {
+    axios.get(`https://chatbox-backend-1-46yg.onrender.com/user/fetch/${userName}`)
+      .then(response => { setContact(response.data); });
+  }
   useEffect(() => {
     refer.current?.scrollIntoView({ behaviour: "smooth" });
-    axios.get(`http://localhost:7000/user/fetch/${userName}`)
+    axios.get(`https://chatbox-backend-1-46yg.onrender.com/user/fetch/${userName}`)
       .then(response => { setContact(response.data); });
   }, [convo]);
 
   useEffect(() => {
-
+    setInterval(() => {
+      fetching();
+    }, 1500);
     axios.get(`https://chatbox-backend-1-46yg.onrender.com/user/fetch/${userName}`)
       .then(response => { setContact(response.data); });
   }, []);
@@ -68,7 +69,7 @@ function message() {
 
   useEffect(() => {
     console.log("datachange reACHED");
-    axios.get('http://localhost:7000/user/contactFetch')
+    axios.get('https://chatbox-backend-1-46yg.onrender.com/user/contactFetch')
       .then((res) => { setContactFrame(res.data); });
   }, [dataUpdate]);
 
@@ -89,7 +90,6 @@ function message() {
 
   }, [selectedContact]);
 
-
   return (
     <div className='frame' >
       <div className='container'>
@@ -98,11 +98,11 @@ function message() {
             <div key={contacts._id}>
               {
                 userName == contacts.person1 &&
-                <button className='contact' onClick={() => { setPerson1(contacts.person2), interval = setInterval(() => { setAddConvo(!addConvo); console.log(interval); }, 500); setMessageId(contacts._id); setConvo(contacts.convo); console.log(convo); }}>{contacts.person2}</button>
+                <button className='contact' onClick={() => { setPerson1(contacts.person2), setMessageId(contacts._id); setConvo(contacts.convo); console.log(convo); }}>{contacts.person2}</button>
               }
               {
                 userName == contacts.person2 &&
-                <button className='contact' onClick={() => { setPerson1(contacts.person1), interval = setInterval(() => { setAddConvo(!addConvo); console.log(interval); }, 500); setMessageId(contacts._id); setConvo(contacts.convo); console.log(convo); }}>{contacts.person1}</button>
+                <button className='contact' onClick={() => { setPerson1(contacts.person1), setMessageId(contacts._id); setConvo(contacts.convo); console.log(convo); }}>{contacts.person1}</button>
               }
             </div>
           )
