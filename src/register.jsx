@@ -7,8 +7,10 @@ function register() {
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
     const submitted = (e) => {
+        const date = new Date().toLocaleDateString;
+        console.log(date);
         e.preventDefault();
-        axios.post('https://chatbox-backend-1-46yg.onrender.com/user/register', { username, password }) // use same name in the back and front end or else the data will be undefined
+        axios.post('http://localhost:7000/user/register', { username, password }) // use same name in the back and front end or else the data will be undefined
             .then((res) => {
                 let userNameLogin = username;
                 let userData = {

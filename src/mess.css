@@ -7,10 +7,46 @@
     left:40%;
     z-index: 2;
 }
+.onlineButton{
+    
+    position:relative;
+    top:-70px;
+    left:430px;
+    border-radius: 30px;
+    background-color: red;
+}
+.offlineButton{
+    
+    position:relative;
+    top:-70px;
+    left:430px;
+    border-radius: 30px;
+    background-color: rgb(9, 255, 0);
+}
+.logOutButton{
+    border-radius: 30px;
+    width:60px;
+    height: 30px;
+    margin-top: 5px;
+    font:bold;
+    float:right;
+}
+.logOutButton:hover{
+    background-color: #000000;
+    color:aliceblue;
+}
 /* .messageContainer::-webkit-scrollbar-corner
 {
     color: #000000;
 } */
+ .userProfile{
+    width:auto;
+    height:40px;
+    font-size: 35px;
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #535353;
+ }
 .messageContainer::-webkit-scrollbar
 {
     width: 7px;
@@ -22,7 +58,7 @@
     border-radius: 30px;
 }
 .contact{
-        
+
     font-size: 30px;
     width:95%;
     height:60px;
@@ -39,7 +75,6 @@
     background-repeat: no-repeat;
     background-size: cover;
     width:500px;
-    
     background-color: rgb(0, 122, 229);
     height:706px;
    

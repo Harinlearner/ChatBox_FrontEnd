@@ -9,7 +9,11 @@ function login() {
 
     const submitted = (e) => {
         e.preventDefault();
-        axios.post('https://chatbox-backend-1-46yg.onrender.com/user/login', { username, password }) // use same name in the back and front end or else the data will be undefined
+        const date = new Date().getDate();
+        const month = new Date().getMonth();
+        const year = new Date().getFullYear();
+        const day=date+"-"+month+"-"+year;
+        axios.post('http://localhost:7000/user/login', { username, password, day}) // use same name in the back and front end or else the data will be undefined
             .then((res) => {
                 let userNameLogin = res.data[0].username;
                 let userData = {
