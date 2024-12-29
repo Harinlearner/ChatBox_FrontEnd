@@ -29,6 +29,14 @@ function message() {
   const [online, setOnline] = useState([]);
   const location = useLocation();
 
+  const onorOff = (person1) => {
+    if (online.includes(person1)) {
+      return false;
+    }
+    else {
+      return true;
+    }
+  };
   // run every time you enter the page
   useEffect(() => {
     const date = new Date().getDate();
@@ -139,7 +147,8 @@ function message() {
     <div className='frame' >
       <div className='container'>
         <div className='contactDiv'>
-          <div className='userProfile'>{userName}<button className='logOutButton' onClick={() => { logOut(); }}>Logout</button></div>
+
+          <div className='userProfile'>{<img width="30px" height="30px" className='image' src="https://static-00.iconduck.com/assets.00/user-icon-1024x1024-dtzturco.png"></img>}{userName}<button className='logOutButton' onClick={() => { logOut(); }}>Logout</button></div>
           {contact.map(contacts => (
             <div key={contacts._id}>
               {
@@ -150,8 +159,8 @@ function message() {
                 userName == contacts.person2 &&
                 <button className='contact' onClick={() => { fetchlog(); setPerson1(contacts.person1), setMessageId(contacts._id); setConvo(contacts.convo); console.log(convo); }}>{contacts.person1}</button>
               }
-              {(userName == contacts.person1 && online.includes(contacts.person2)) || (userName == contacts.person2 && online.includes(contacts.person1)) && <button className='onlineButton'>online</button>}
-              {!((userName == contacts.person1 && online.includes(contacts.person2)) || (userName == contacts.person2 && online.includes(contacts.person1))) && <button className='offlineButton'>offline</button>}
+              {/* {(userName == contacts.person1 && online.includes(contacts.person2)) || (userName == contacts.person2 && online.includes(contacts.person1)) && <button className='onlineButton'>online</button>}
+              {!((userName == contacts.person1 && online.includes(contacts.person2)) || (userName == contacts.person2 && online.includes(contacts.person1))) && <button className='offlineButton'>offline</button>} */}
             </div>
           )
           )}
@@ -162,7 +171,11 @@ function message() {
         </div>
 
         <div style={{ width: '1000px' }}>
-          <div className="username">{person1}</div>
+          <div className="username">{<img width="30px" height="30px" className='image1' src="https://static-00.iconduck.com/assets.00/user-icon-1024x1024-dtzturco.png"></img>}<div className='userposition'>{person1}
+            {person1 != "select any Contact" && (!onorOff(person1) && <button className='onlineButton'>Online</button>)}
+            {person1 != "select any Contact" && (onorOff(person1) && <button className='offlineButton'>Offline</button>)}
+          </div>
+          </div>
           <div className='messageContainer'>
             {contact.map(contacts => {
               return (
