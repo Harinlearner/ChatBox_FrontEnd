@@ -151,8 +151,8 @@ function message() {
                 userName == contacts.person2 &&
                 <button className='contact' onClick={() => { fetchlog(); setPerson1(contacts.person1), setMessageId(contacts._id); setConvo(contacts.convo); console.log(convo); }}>{contacts.person1}</button>
               }
-              {(userName == contacts.person1 && online.includes(contacts.person2)) || (userName == contacts.person2 && online.includes(contacts.person1)) && <button className='onlineButton'>online</button>}
               {!((userName == contacts.person1 && online.includes(contacts.person2)) || (userName == contacts.person2 && online.includes(contacts.person1))) && <button className='offlineButton'>offline</button>}
+              {(userName == contacts.person1 && online.includes(contacts.person2)) || (userName == contacts.person2 && online.includes(contacts.person1)) && <button className='onlineButton'>online</button>}
             </div>
           )
           )}
