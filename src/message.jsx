@@ -138,7 +138,6 @@ function message() {
   return (
     <div className='frame' >
       <div className='container'>
-
         <div className='contactDiv'>
           <div className='userProfile'>{userName}<button className='logOutButton' onClick={() => { logOut(); }}>Logout</button></div>
           {contact.map(contacts => (
@@ -152,7 +151,7 @@ function message() {
                 <button className='contact' onClick={() => { fetchlog(); setPerson1(contacts.person1), setMessageId(contacts._id); setConvo(contacts.convo); console.log(convo); }}>{contacts.person1}</button>
               }
               {!((userName == contacts.person1 && online.includes(contacts.person2)) || (userName == contacts.person2 && online.includes(contacts.person1))) && <button className='offlineButton'>offline</button>}
-              {(userName == contacts.person1 && online.includes(contacts.person2)) || (userName == contacts.person2 && online.includes(contacts.person1)) && <button className='onlineButton'>online</button>}
+              {<button className='onlineButton'>online</button>}
             </div>
           )
           )}
