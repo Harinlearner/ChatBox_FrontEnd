@@ -4,6 +4,8 @@ import axios from 'axios';
 import './mess.css'
 import contactList from './contactList';
 import { useNavigate } from 'react-router-dom';
+import { debounce } from 'lodash';
+
 
 function message() {
 
@@ -68,7 +70,9 @@ function message() {
     console.log(online);
   }, [logDetails]);
 
-
+  const debouncedFetch = debounce(fetchlog, 5000); // Wait 5 seconds between calls
+  debouncedFetch();
+  
   function logOut() {
     axios.post('https://chatbox-backend-k4rp.onrender.com/user/removelog', { userName: userName })
       .then((res) => console.log(res))
