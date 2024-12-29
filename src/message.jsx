@@ -46,7 +46,7 @@ function message() {
     axios.get(`https://chatbox-backend-k4rp.onrender.com/user/fetchlog/${day1}`)
       .then((resp) => { setLogDetails(resp.data); });
     // console.log(logDetails);
-  }, [location.pathname]);
+  }, [location.pathname,convo]);
 
   function submitted(e) {
     e.preventDefault();
@@ -74,7 +74,7 @@ function message() {
     const onlinet = logDetails.map(({ username }) => (username));
     setOnline(onlinet);
     console.log(online);
-  }, [logDetails]);
+  }, [logDetails],convo);
 
 
   function logOut() {
