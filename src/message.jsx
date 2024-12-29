@@ -26,64 +26,63 @@ function message() {
   const [contactFrame, setContactFrame] = useState([]);
   const [selectedContact, setSelectedContact] = useState('');
   const [dataUpdate, setDataUpdate] = useState(true);
-  const [online,setOnline]=useState([]);
+  const [online, setOnline] = useState([]);
   const location = useLocation();
 
   // run every time you enter the page
   useEffect(() => {
     const date = new Date().getDate();
-      const month = new Date().getMonth();
+    const month = new Date().getMonth();
     const year = new Date().getFullYear();
     const day1 = date + "-" + month + "-" + year;
-    axios.get(`http://localhost:7000/user/fetchlog/${day1}`)
+    axios.get(`https://chatbox-backend-k4rp.onrender.com/user/fetchlog/${day1}`)
       .then((resp) => { setLogDetails(resp.data); });
     // console.log(logDetails);
-  }, [location.pathname]); 
+  }, [location.pathname]);
 
   function submitted(e) {
     e.preventDefault();
     setConvo([...convo, { person: person1, personConvo: message }]);
-    axios.put(`http://localhost:7000/user/update/${messageId}`, { updatedMessage: message, personCon: userName })
+    axios.put(`https://chatbox-backend-k4rp.onrender.com/user/update/${messageId}`, { updatedMessage: message, personCon: userName })
       .then((res) => console.log("success"))
       .then(error => console.log(error))
-    axios.get(`http://localhost:7000/user/fetch/${userName}`)
+    axios.get(`https://chatbox-backend-k4rp.onrender.com/user/fetch/${userName}`)
       .then(response => { setContact(response.data); });
     console.log(message);
     setMessage('');
   }
 
-  function fetchlog()
-  {
-      const date = new Date().getDate();
+  function fetchlog() {
+    const date = new Date().getDate();
     const month = new Date().getMonth();
     const year = new Date().getFullYear();
     const day1 = date + "-" + month + "-" + year;
-    axios.get(`http://localhost:7000/user/fetchlog/${day1}`)
+    axios.get(`https://chatbox-backend-k4rp.onrender.com/user/fetchlog/${day1}`)
       .then((resp) => { setLogDetails(resp.data); });
   }
 
   // it is used to update change after some time because react will not update directly it update collectively
-  useEffect(()=>{
-    const onlinet=logDetails.map(({username})=>(username));
-      setOnline(onlinet);
-      console.log(online);
-  },[logDetails]);
+  useEffect(() => {
+    const onlinet = logDetails.map(({ username }) => (username));
+    setOnline(onlinet);
+    console.log(online);
+  }, [logDetails]);
 
 
   function logOut() {
-    axios.post('http://localhost:7000/user/removelog', { userName: userName })
+    axios.post('https://chatbox-backend-k4rp.onrender.com/user/removelog', { userName: userName })
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
     navigate("/");
   }
   function fetching() {
     setDataUpdate(!dataUpdate);
-    axios.get(`http://localhost:7000/user/fetch/${userName}`)
+    axios.get(`https://chatbox-backend-k4rp.onrender.com/user/fetch/${userName}`)
       .then(response => { setContact(response.data); });
   }
   useEffect(() => {
     refer.current?.scrollIntoView({ behaviour: "smooth" });
-    axios.get(`http://localhost:7000/user/fetch/${userName}`)
+    axios.get(`https://chatbox-backend-k4rp.onrender.com/user/fetch/${userName}`)
       .then(response => { setContact(response.data); });
   }, [convo]);
 
@@ -92,32 +91,32 @@ function message() {
       // console.log("1500");
       fetching();
     }, 1500);
-    axios.get(`http://localhost:7000/user/fetch/${userName}`)
+    axios.get(`https://chatbox-backend-k4rp.onrender.com/user/fetch/${userName}`)
       .then(response => { setContact(response.data); });
   }, []);
- 
+
   useEffect(() => {
     // refer.current?.scrollIntoView({ behaviour: "smooth" });
-    axios.get(`http://localhost:7000/user/fetch/${userName}`)
+    axios.get(`https://chatbox-backend-k4rp.onrender.com/user/fetch/${userName}`)
       .then(response => { setContact(response.data); });
 
   }, [dataUpdate, addConvo]);
 
   /*        iframe           */
   useEffect(() => {
-    axios.get('http://localhost:7000/user/contactFetch')
+    axios.get('https://chatbox-backend-k4rp.onrender.com/user/contactFetch')
       .then((res) => { setContactFrame(res.data); });
   }, [addFlag]);
 
-  useEffect(()=>{
-    axios.get(`http://localhost:7000/user/fetch/${userName}`)
-    .then(response => { setContact(response.data); });
-   
-  },[]);
-  
   useEffect(() => {
-    
-    axios.get('http://localhost:7000/user/contactFetch')
+    axios.get(`https://chatbox-backend-k4rp.onrender.com/user/fetch/${userName}`)
+      .then(response => { setContact(response.data); });
+
+  }, []);
+
+  useEffect(() => {
+
+    axios.get('https://chatbox-backend-k4rp.onrender.com/user/contactFetch')
       .then((res) => { setContactFrame(res.data); });
   }, [dataUpdate]);
 
@@ -127,7 +126,7 @@ function message() {
       const secondPerson = contact.map(({ person2 }) => (person2));
       console.log(selectedContact);
       if (!firstPerson.includes(selectedContact) && !secondPerson.includes(selectedContact)) {
-        axios.post('http://localhost:7000/user/addConvo', { person1: userNameMessage, person2: selectedContact })
+        axios.post('https://chatbox-backend-k4rp.onrender.com/user/addConvo', { person1: userNameMessage, person2: selectedContact })
           .then((res) => { console.log(res); setDataUpdate(!dataUpdate); })
           .catch((err) => { console.log(err); });
       }
@@ -146,14 +145,14 @@ function message() {
             <div key={contacts._id}>
               {
                 userName == contacts.person1 &&
-                <button className='contact' onClick={() => { fetchlog();setPerson1(contacts.person2), setMessageId(contacts._id); setConvo(contacts.convo); console.log(convo); }}>{contacts.person2}</button>
+                <button className='contact' onClick={() => { fetchlog(); setPerson1(contacts.person2), setMessageId(contacts._id); setConvo(contacts.convo); console.log(convo); }}>{contacts.person2}</button>
               }
               {
                 userName == contacts.person2 &&
-                <button className='contact' onClick={() => { fetchlog();setPerson1(contacts.person1), setMessageId(contacts._id); setConvo(contacts.convo); console.log(convo); }}>{contacts.person1}</button>
+                <button className='contact' onClick={() => { fetchlog(); setPerson1(contacts.person1), setMessageId(contacts._id); setConvo(contacts.convo); console.log(convo); }}>{contacts.person1}</button>
               }
-              {(userName == contacts.person1 && online.includes(contacts.person2))||(userName == contacts.person2 && online.includes(contacts.person1)) && <button className='onlineButton'>online</button>}
-              {!((userName == contacts.person1 && online.includes(contacts.person2))||(userName == contacts.person2 && online.includes(contacts.person1))) && <button className='offlineButton'>offline</button>}
+              {(userName == contacts.person1 && online.includes(contacts.person2)) || (userName == contacts.person2 && online.includes(contacts.person1)) && <button className='onlineButton'>online</button>}
+              {!((userName == contacts.person1 && online.includes(contacts.person2)) || (userName == contacts.person2 && online.includes(contacts.person1))) && <button className='offlineButton'>offline</button>}
             </div>
           )
           )}

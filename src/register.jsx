@@ -10,7 +10,7 @@ function register() {
         const date = new Date().toLocaleDateString;
         console.log(date);
         e.preventDefault();
-        axios.post('http://localhost:7000/user/register', { username, password }) // use same name in the back and front end or else the data will be undefined
+        axios.post('https://chatbox-backend-k4rp.onrender.com/user/register', { username, password }) // use same name in the back and front end or else the data will be undefined
             .then((res) => {
                 let userNameLogin = username;
                 let userData = {
@@ -22,7 +22,7 @@ function register() {
             .catch((err) => { console.log(err); window.alert("User Already exists"); navigate("/") });
     }
     return (
-        <div style={{ paddingTop: "0.2%", paddingBottom: "12.5%", backgroundImage: "url(" + "https://png.pngtree.com/thumb_back/fh260/background/20200714/pngtree-modern-double-color-futuristic-neon-background-image_351866.jpg" + ")",backgroundRepeat:"no-repeat",backgroundSize:"cover"  }}>
+        <div style={{ paddingTop: "0.2%", paddingBottom: "12.5%", backgroundImage: "url(" + "https://png.pngtree.com/thumb_back/fh260/background/20200714/pngtree-modern-double-color-futuristic-neon-background-image_351866.jpg" + ")", backgroundRepeat: "no-repeat", backgroundSize: "cover" }}>
             <div>
                 <center>
                     <div className='loginContainer'>

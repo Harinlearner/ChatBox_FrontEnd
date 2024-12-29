@@ -12,8 +12,8 @@ function login() {
         const date = new Date().getDate();
         const month = new Date().getMonth();
         const year = new Date().getFullYear();
-        const day=date+"-"+month+"-"+year;
-        axios.post('http://localhost:7000/user/login', { username, password, day}) // use same name in the back and front end or else the data will be undefined
+        const day = date + "-" + month + "-" + year;
+        axios.post('https://chatbox-backend-k4rp.onrender.com/user/login', { username, password, day }) // use same name in the back and front end or else the data will be undefined
             .then((res) => {
                 let userNameLogin = res.data[0].username;
                 let userData = {
@@ -25,7 +25,7 @@ function login() {
             .catch((err) => { window.alert("Enter the Correct username/password") });
     }
     return (
-        <div style={{ paddingTop: "0.2%", paddingBottom: "12.5%", backgroundImage: "url(" + "https://png.pngtree.com/thumb_back/fh260/background/20200714/pngtree-modern-double-color-futuristic-neon-background-image_351866.jpg" + ")",backgroundRepeat:"no-repeat",backgroundSize:"cover" }}>
+        <div style={{ paddingTop: "0.2%", paddingBottom: "12.5%", backgroundImage: "url(" + "https://png.pngtree.com/thumb_back/fh260/background/20200714/pngtree-modern-double-color-futuristic-neon-background-image_351866.jpg" + ")", backgroundRepeat: "no-repeat", backgroundSize: "cover" }}>
             <div>
                 <center>
                     <div className='loginContainer'>
@@ -44,7 +44,7 @@ function login() {
                             <br></br>
                             <br></br>
                             <label>{`Don't have account`}</label>
-                            <a onClick={()=>{navigate1("/register");}}> Register</a>
+                            <a onClick={() => { navigate1("/register"); }}> Register</a>
                         </form>
                     </div>
                 </center>
