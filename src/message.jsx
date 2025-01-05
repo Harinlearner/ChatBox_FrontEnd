@@ -188,11 +188,11 @@ function message() {
                         </div>
                         } */}
                         {userName === mess.person &&
-                          <div className="messageContent" style={{ marginRight: "12px", backgroundColor: 'goldenrod', width: 'fit-content', marginBottom: '-70px', float: 'right', height: "35px" }}><h1>{mess.personConvo}</h1>
+                          <div className="messageContent" style={{ color:'black',marginRight: "12px", backgroundColor:'ghostwhite', width: 'fit-content', marginBottom: '-70px', float: 'right', height: "35px" }}><h1>{mess.personConvo}</h1>
                           </div>
                         }
                         {userName !== mess.person &&
-                          <div className="messageContent" style={{ marginLeft: "8px", backgroundColor: 'goldenrod', width: 'fit-content', marginBottom: '-70px', float: 'left', height: "35px" }}><h1>{mess.personConvo}</h1>
+                          <div className="messageContent" style={{ color:'black',marginLeft: "8px", backgroundColor: 'ghostwhite', width: 'fit-content', marginBottom: '-70px', float: 'left', height: "35px" }}><h1>{mess.personConvo}</h1>
                           </div>
                         }
 
